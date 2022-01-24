@@ -1,3 +1,5 @@
+import { UserService } from './../../services/user.service';
+import { TokenService } from './../../services/token.service';
 import { SigninService } from './../services/signin.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -14,7 +16,9 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private signinService: SigninService
+    private signinService: SigninService,
+    private tokenService: TokenService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +34,8 @@ export class SigninComponent implements OnInit {
 
     const { username, password } = this.loginFormGroup.getRawValue();
     this.signinService.login(username, password).subscribe((response) => {
-      console.log(response)
+      this.tokenService.saveToken(response.token)
+      this.userService.saveUser(response.user)
     }, (error) => {
       this.loginError = 'Credenciais incorretas'
     })
