@@ -1,10 +1,10 @@
 <div class="signup row d-flex justify-content-center align-items-center">
   <form
-    [formGroup]="registerFormGroup"
+    [formGroup]="loginFormGroup"
     class="form col-8 border p-4"
-    (ngSubmit)="signup()"
+    (ngSubmit)="signin()"
     >
-    <h1 class="text-center">Criar conta</h1>
+    <h1 class="text-center">Fazer login</h1>
 
     <fieldset class="form-group">
       <input
@@ -18,7 +18,7 @@
 
       <small
         class="text-danger"
-        *ngIf="registerFormGroup.get('username')?.errors?.['required'] && registerFormGroup.get('username')?.touched"
+        *ngIf="loginFormGroup.get('username')?.errors?.['required'] && loginFormGroup.get('username')?.touched"
       >
       Campo obrigatório
       </small>
@@ -36,23 +36,24 @@
 
       <small
         class="text-danger"
-        *ngIf="registerFormGroup.get('password')?.errors?.['required'] && registerFormGroup.get('password')?.touched"
+        *ngIf="loginFormGroup.get('password')?.errors?.['required'] && loginFormGroup.get('password')?.touched"
       >
         Campo obrigatório
       </small>
 
-      <small
-        class="text-danger"
-        *ngIf="registerFormGroup.get('password')?.errors?.['minlength'] && registerFormGroup.get('password')?.touched"
-      >
-        Sua senha deve conter no mínimo 6 caracteres
-      </small>
     </fieldset>
+
+    <div
+      class="alert alert-danger mt-2"
+      *ngIf="loginError !== ''"
+      >
+      Credenciais incorretas
+    </div>
 
     <button
       type="submit"
       class="btn btn-primary btn-block mt-3"
-      [disabled]="registerFormGroup.get('password')?.errors || registerFormGroup.get('username')?.errors"
+      [disabled]="loginFormGroup.get('password')?.errors || loginFormGroup.get('username')?.errors"
       >Continuar</button>
   </form>
 </div>
