@@ -1,10 +1,8 @@
+import { IsLoggedInGuard } from './guards/is-logged-in.guard';
 import { EnsureAuthenticatedGuard } from './guards/ensure-authenticated.guard';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { SignupComponent } from './users/signup/signup.component';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SigninComponent } from './users/signin/signin.component';
 
 const routes: Routes = [
   {
@@ -12,12 +10,9 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'signup',
-    component: SignupComponent
-  },
-  {
-    path: 'signin',
-    component: SigninComponent
+    path: 'users',
+    loadChildren: () => import('./users/users.module').then((module) => module.UsersModule),
+    canLoad: [IsLoggedInGuard]
   },
   {
     path: 'dashboard',
