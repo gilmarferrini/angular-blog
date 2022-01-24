@@ -1,4 +1,8 @@
-<app-post></app-post>
-<app-post></app-post>
-<app-post></app-post>
-<app-post></app-post>
+
+<app-post
+  *ngFor="let post of posts"
+  [id]="post.id"
+  [post_image]="post.post_image"
+  [title]="post.title"
+></app-post>
+
