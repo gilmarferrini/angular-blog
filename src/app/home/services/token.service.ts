@@ -12,6 +12,14 @@ export class TokenService {
     return !!localStorage.getItem('@token')
   }
 
+  getToken() {
+    if (!this.isLoggedIn) {
+      return;
+    }
+
+    return localStorage.getItem('@token')
+  }
+
   saveToken(token: string) {
     localStorage.setItem('@token', token)
   }

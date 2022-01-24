@@ -1,0 +1,40 @@
+<form class="container form mt-5" (submit)="createPost()">
+  <fieldset class="form-group">
+    <input
+      type="text"
+      class="form-control mt-1"
+      placeholder="Título"
+      aria-label="Título"
+      [(ngModel)]="title"
+      name="title"
+    />
+  </fieldset>
+
+  <fieldset class="form-group">
+    <textarea
+      type="text"
+      class="form-control mt-1"
+      placeholder="Conteúdo do post"
+      aria-label="Conteúdo do post"
+      name="body"
+      [(ngModel)]="body"
+    ></textarea>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <input
+      type="file"
+      name="post_image"
+      class="mt-1"
+      name="post_image"
+      accept="image/*"
+      (change)="saveImage($event.target)"
+    />
+  </fieldset>
+
+  <button type="submit" class="btn btn-primary mt-3">Postar</button>
+
+  <div *ngIf="message" class="alert alert-success mt-3">
+    {{ message }}
+  </div>
+</form>

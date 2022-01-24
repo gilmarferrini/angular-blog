@@ -1,7 +1,9 @@
+import { PostsModule } from './../posts/posts.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -11,7 +13,9 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    PostsModule,
+    FormsModule
   ]
 })
 export class DashboardModule { }

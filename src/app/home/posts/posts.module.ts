@@ -2,16 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PostComponent } from './post/post.component';
 import { ListPostsComponent } from './list-posts/list-posts.component';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     PostComponent,
-    ListPostsComponent
+    ListPostsComponent,
+    CreatePostComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
-  exports: [ListPostsComponent]
+  exports: [ListPostsComponent, CreatePostComponent]
 })
 export class PostsModule { }
