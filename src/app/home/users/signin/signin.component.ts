@@ -3,6 +3,7 @@ import { TokenService } from './../../services/token.service';
 import { SigninService } from './../services/signin.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -18,7 +19,8 @@ export class SigninComponent implements OnInit {
     private formBuilder: FormBuilder,
     private signinService: SigninService,
     private tokenService: TokenService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +38,7 @@ export class SigninComponent implements OnInit {
     this.signinService.login(username, password).subscribe((response) => {
       this.tokenService.saveToken(response.token)
       this.userService.saveUser(response.user)
+      this.router.navigate(['home/dashboard'])
     }, (error) => {
       this.loginError = 'Credenciais incorretas'
     })
