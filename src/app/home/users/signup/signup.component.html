@@ -1,28 +1,58 @@
 <div class="signup row d-flex justify-content-center align-items-center">
-  <form class="form col-8 border p-4">
-    <h1 class="text-center">Create account</h1>
+  <form
+    [formGroup]="registerFormGroup"
+    class="form col-8 border p-4"
+    (ngSubmit)="signup()"
+    >
+    <h1 class="text-center">Registro</h1>
 
     <fieldset class="form-group">
       <input
         type="text"
         name="username"
-        placeholder="Username"
+        placeholder="Nome de usuário"
+        aria-label="Nome de usuário"
         class="form-control mt-4"
+        formControlName="username"
       />
+
+      <small
+        class="text-danger"
+        *ngIf="registerFormGroup.get('username')?.errors?.['required'] && registerFormGroup.get('username')?.touched"
+      >
+      Campo obrigatório
+      </small>
     </fieldset>
 
     <fieldset class="form-group">
       <input
         type="password"
         name="password"
-        placeholder="Password"
+        aria-label="Senha"
+        placeholder="Senha"
         class="form-control mt-1"
+        formControlName="password"
       />
+
+      <small
+        class="text-danger"
+        *ngIf="registerFormGroup.get('password')?.errors?.['required'] && registerFormGroup.get('password')?.touched"
+      >
+        Campo obrigatório
+      </small>
+
+      <small
+        class="text-danger"
+        *ngIf="registerFormGroup.get('password')?.errors?.['minlength'] && registerFormGroup.get('password')?.touched"
+      >
+        Sua senha deve conter no mínimo 6 caracteres
+      </small>
     </fieldset>
 
     <button
       type="submit"
       class="btn btn-primary btn-block mt-3"
+      [disabled]="registerFormGroup.get('password')?.errors || registerFormGroup.get('username')?.errors"
       >Register</button>
   </form>
 </div>
