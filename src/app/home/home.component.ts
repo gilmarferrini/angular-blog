@@ -11,6 +11,8 @@ export class HomeComponent implements OnInit {
 
   posts: Post[] = []
 
+  textFilter = ''
+
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
@@ -22,5 +24,15 @@ export class HomeComponent implements OnInit {
       this.posts = data;
     })
   }
-  filterPosts() {}
+
+  filterPosts() {
+    if (!this.textFilter) {
+      this.loadAllPosts()
+      return;
+    }
+
+    this.posts = this.posts.filter(
+      post => post.title.toLowerCase().includes(this.textFilter.toLowerCase())
+      )
+  }
 }
