@@ -16,9 +16,13 @@ export class UserService {
     const user = localStorage.getItem('@user')
 
     if (user) {
-      return user;
+      return JSON.parse(user);
     }
 
     return undefined;
+  }
+
+  removeUser() {
+    localStorage.removeItem('@user')
   }
 }

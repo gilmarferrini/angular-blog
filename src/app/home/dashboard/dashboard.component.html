@@ -1,1 +1,14 @@
-<p>dashboard works!</p>
+<div class="dashboard">
+  <header class="header">
+    <div class="header__search">
+    </div>
+    <div class="header__profile">
+      <img
+        src="{{user.avatar}}"
+        alt="Foto de {{user.username}}">
+
+      <a routerLink="/" (click)="logout()">Logout</a>
+    </div>
+  </header>
+
+</div>
