@@ -8,6 +8,7 @@ export class TokenService {
   constructor() { }
 
   isLoggedIn() {
+    console.log(!!localStorage.getItem('@token'))
     return !!localStorage.getItem('@token')
   }
 

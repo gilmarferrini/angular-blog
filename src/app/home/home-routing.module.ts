@@ -1,3 +1,4 @@
+import { EnsureAuthenticatedGuard } from './guards/ensure-authenticated.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignupComponent } from './users/signup/signup.component';
 import { HomeComponent } from './home.component';
@@ -20,7 +21,8 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    loadChildren: () => import('./dashboard/dashboard.module').then((module) => module.DashboardModule),
+    canLoad: [EnsureAuthenticatedGuard]
   }
 ];
 
