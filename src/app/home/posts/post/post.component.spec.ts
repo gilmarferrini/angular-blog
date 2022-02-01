@@ -37,4 +37,12 @@ describe(PostComponent.name, () => {
     component.title = someTitle
     expect(component.title).toBe(someTitle)
   })
+
+  it ('(D) Should display title when render component', () => {
+    const someTitle = "Some Title"
+    component.title = someTitle
+    fixture.detectChanges()
+    const postElement: HTMLElement = fixture.nativeElement.querySelector('h3')
+    expect(postElement.textContent?.trim()).toBe(someTitle)
+  })
 })
