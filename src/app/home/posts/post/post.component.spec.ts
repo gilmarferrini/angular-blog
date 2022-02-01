@@ -19,4 +19,10 @@ describe(PostComponent.name, () => {
     expect(component).toBeTruthy()
   })
 
+  it ('Should have id with "some_id" (@Input() id)', () => {
+    const someId = "some_id"
+    component.id = someId;
+
+    expect(component.id).toBe(someId)
+  })
 })
