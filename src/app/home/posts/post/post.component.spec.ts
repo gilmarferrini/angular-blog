@@ -25,4 +25,10 @@ describe(PostComponent.name, () => {
 
     expect(component.id).toBe(someId)
   })
+
+  it ('Should have post_image with "some_post_image" (@Input() post_image)', () => {
+    const somePostImage = "some_post_image"
+    component.post_image = somePostImage
+    expect(component.post_image).toBe(somePostImage)
+  })
 })
