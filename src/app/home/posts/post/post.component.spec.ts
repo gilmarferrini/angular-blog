@@ -45,4 +45,13 @@ describe(PostComponent.name, () => {
     const postElement: HTMLElement = fixture.nativeElement.querySelector('h3')
     expect(postElement.textContent?.trim()).toBe(someTitle)
   })
+
+  it ('(D) Should display image with attribute alt equal "Logo do post Some Post"', () => {
+    const someTitle = "Some Post"
+    component.title = someTitle
+    fixture.detectChanges()
+
+    const imageElement: HTMLElement = fixture.nativeElement.querySelector('img')
+    expect(imageElement.getAttribute("alt")?.trim()).toBe("Logo do post Some Post")
+  })
 })
