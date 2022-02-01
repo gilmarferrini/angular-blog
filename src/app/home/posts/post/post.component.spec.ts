@@ -31,4 +31,10 @@ describe(PostComponent.name, () => {
     component.post_image = somePostImage
     expect(component.post_image).toBe(somePostImage)
   })
+
+  it ('Should have title with "some_title" (@Input() title)', () => {
+    const someTitle = "some_title"
+    component.title = someTitle
+    expect(component.title).toBe(someTitle)
+  })
 })
