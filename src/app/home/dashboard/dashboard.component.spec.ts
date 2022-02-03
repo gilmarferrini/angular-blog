@@ -75,4 +75,13 @@ describe(DashboardComponent.name, () => {
     expect(tokenService.removeToken).toHaveBeenCalled()
     expect(userService.removeUser).toHaveBeenCalled()
   })
+
+  it('(D) Should display in img alt attribute with value "Foto de any_username"', () => {
+    const user = buildUser();
+    spyOn(userService, 'getUser').and.returnValue(user)
+    fixture.detectChanges();
+
+    const imageElement: HTMLElement = fixture.nativeElement.querySelector('.header__profile > img')
+    expect(imageElement.getAttribute('alt')).toBe('Foto de any_username')
+  })
 })
