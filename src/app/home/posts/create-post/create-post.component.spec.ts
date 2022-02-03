@@ -4,6 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CreatePostComponent } from './create-post.component';
 import { PostService } from '../services/post.service';
 import { PostsModule } from '../posts.module';
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 
 
 describe(CreatePostComponent.name, () => {
@@ -16,7 +17,10 @@ describe(CreatePostComponent.name, () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PostsModule]
+      imports: [
+        PostsModule,
+        HttpClientTestingModule
+      ]
     }).compileComponents()
 
     fixture = TestBed.createComponent(CreatePostComponent)
@@ -26,8 +30,10 @@ describe(CreatePostComponent.name, () => {
     postService = TestBed.inject(PostService)
     tokenService = TestBed.inject(TokenService)
 
-    it('Should create component', () => {
-      expect(component).toBeTruthy()
-    })
   })
+
+  it('Should create component', () => {
+    expect(component).toBeTruthy()
+  })
+
 })
