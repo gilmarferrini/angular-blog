@@ -5,19 +5,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardModule } from './dashboard.module';
 import { RouterTestingModule } from '@angular/router/testing';
-import { User } from '../users/models/user';
+import { buildUser } from '../services/test/build-user';
 
 describe(DashboardComponent.name, () => {
-
-  function buildUser(): User {
-    return {
-      id: 'any_id',
-      avatar: 'any_avatar',
-      username: 'any_username',
-      created_at: new Date()
-    }
-  }
-
 
   let fixture: ComponentFixture<DashboardComponent>
   let component: DashboardComponent
