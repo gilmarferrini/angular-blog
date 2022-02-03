@@ -19,7 +19,7 @@ export class UserService {
       return JSON.parse(user);
     }
 
-    return undefined;
+    return null;
   }
 
   removeUser() {

@@ -42,4 +42,14 @@ describe(CreatePostComponent.name, () => {
     expect(component.message).withContext('Should display empty value for message').toBe('')
   })
 
+  it('Should not call createPost when userId and token equal null', () => {
+    spyOn(userService, 'getUser').and.returnValue(null)
+    spyOn(tokenService, 'getToken').and.returnValue(null)
+
+    spyOn(postService, 'createPost')
+
+    component.createPost()
+    expect(postService.createPost).not.toHaveBeenCalled()
+  })
+
 })

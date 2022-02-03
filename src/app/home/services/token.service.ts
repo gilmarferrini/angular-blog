@@ -14,7 +14,7 @@ export class TokenService {
 
   getToken() {
     if (!this.isLoggedIn) {
-      return;
+      return null;
     }
 
     return localStorage.getItem('@token')

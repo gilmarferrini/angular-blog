@@ -27,8 +27,13 @@ export class CreatePostComponent implements OnInit {
 
   createPost() {
     const form = new FormData()
-    const userId = this.userService.getUser().id
+    let userId = null;
+    const user = this.userService.getUser()
     const token = this.tokenService.getToken()
+
+    if (user) {
+      userId = user.id
+    }
 
     if (!userId || !token) {
       return;
