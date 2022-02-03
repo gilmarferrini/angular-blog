@@ -63,4 +63,16 @@ describe(DashboardComponent.name, () => {
     );
   })
 
+  it(`#${DashboardComponent.prototype.logout.name} Should call tokenService.removeToken and userService.removeUser when trigger logout`, () => {
+    const user = buildUser()
+    spyOn(userService, 'getUser').and.returnValue(user)
+    spyOn(userService, 'removeUser')
+    spyOn(tokenService, 'removeToken')
+    fixture.detectChanges();
+
+    component.logout()
+
+    expect(tokenService.removeToken).toHaveBeenCalled()
+    expect(userService.removeUser).toHaveBeenCalled()
+  })
 })
