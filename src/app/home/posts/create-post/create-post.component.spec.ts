@@ -36,4 +36,10 @@ describe(CreatePostComponent.name, () => {
     expect(component).toBeTruthy()
   })
 
+  it('(D) Should display empty value for title, body and message', () => {
+    expect(component.title).withContext('Should display empty value for title').toBe('')
+    expect(component.body).withContext('Should display empty value for body').toBe('')
+    expect(component.message).withContext('Should display empty value for message').toBe('')
+  })
+
 })
