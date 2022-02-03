@@ -5,6 +5,7 @@ import { CreatePostComponent } from './create-post.component';
 import { PostService } from '../services/post.service';
 import { PostsModule } from '../posts.module';
 import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { buildUser } from '../../services/test/build-user';
 
 
 describe(CreatePostComponent.name, () => {
@@ -45,10 +46,23 @@ describe(CreatePostComponent.name, () => {
   it('Should not call createPost when userId and token equal null', () => {
     spyOn(userService, 'getUser').and.returnValue(null)
     spyOn(tokenService, 'getToken').and.returnValue(null)
-
     spyOn(postService, 'createPost')
+    fixture.detectChanges()
 
     component.createPost()
+    expect(postService.createPost).not.toHaveBeenCalled()
+  })
+
+
+  it('Should not call createPost when userId is valid and token equal null', () => {
+    const user = buildUser()
+    spyOn(userService, 'getUser').and.returnValue(user)
+    spyOn(tokenService, 'getToken').and.returnValue(null)
+    spyOn(postService, 'createPost'
+    )
+    fixture.detectChanges()
+    component.createPost()
+
     expect(postService.createPost).not.toHaveBeenCalled()
   })
 
