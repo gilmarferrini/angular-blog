@@ -52,4 +52,15 @@ describe(DashboardComponent.name, () => {
     expect(component.user).toBe(user);
   })
 
+  it ('Should change user avatar to default avatar when avatar to be null', () => {
+    const user = buildUser();
+
+    spyOn(userService, 'getUser').and.returnValue({ ...user, avatar: null})
+    fixture.detectChanges();
+
+    expect(component.user.avatar).toBe(
+      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+    );
+  })
+
 })
