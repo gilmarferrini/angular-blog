@@ -40,10 +40,16 @@ describe(SignupComponent.name, () => {
     expect(registerForm.value).toEqual(defaultValues)
   })
 
-  it('Should trigger required error when empty value on input', () => {
+  it('Should trigger required error when empty value on username field', () => {
     fixture.detectChanges()
     const registerForm = component.registerFormGroup
     expect(registerForm.get('username')?.errors?.['required']).toBeTruthy()
+  })
+
+  it('Should trigger required error when empty value on password field', () => {
+    fixture.detectChanges()
+    const registerForm = component.registerFormGroup
+    expect(registerForm.get('password')?.errors?.['required']).toBeTruthy()
   })
 
 })
