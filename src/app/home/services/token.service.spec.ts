@@ -22,4 +22,8 @@ describe(TokenService.name, () => {
     expect(token).toBe('some_token')
   })
 
+  it(`#${TokenService.prototype.isLoggedIn} Should return false when user is not logged`, () => {
+    const isLogged = tokenService.isLoggedIn()
+    expect(isLogged).toBeFalse()
+  })
 })
