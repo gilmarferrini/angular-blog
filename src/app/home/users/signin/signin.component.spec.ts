@@ -39,4 +39,12 @@ describe(SigninComponent.name, () => {
     expect(component).toBeTruthy()
   })
 
+  it('Should display signin form', () => {
+    fixture.detectChanges()
+
+    const form: HTMLFormElement = fixture.nativeElement.querySelector('form')
+    expect(form).toBeTruthy();
+
+  })
+
 })
