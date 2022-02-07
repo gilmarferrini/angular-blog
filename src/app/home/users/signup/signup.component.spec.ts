@@ -29,4 +29,15 @@ describe(SignupComponent.name, () => {
     expect(component).toBeTruthy()
   })
 
+  it('Should input started on default empty value', () => {
+    fixture.detectChanges()
+    const defaultValues = {
+      username: '',
+      password: ''
+    }
+
+    const registerForm = component.registerFormGroup
+    expect(registerForm.value).toEqual(defaultValues)
+  })
+
 })
