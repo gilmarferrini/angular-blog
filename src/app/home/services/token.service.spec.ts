@@ -26,4 +26,11 @@ describe(TokenService.name, () => {
     const isLogged = tokenService.isLoggedIn()
     expect(isLogged).toBeFalse()
   })
+
+
+  it(`#${TokenService.prototype.isLoggedIn} Should return true when user is logged`, () => {
+    localStorage.setItem('@token', 'some_token')
+    const isLogged = tokenService.isLoggedIn()
+    expect(isLogged).toBeTrue()
+  })
 })
