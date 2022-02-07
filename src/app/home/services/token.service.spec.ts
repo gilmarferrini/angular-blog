@@ -7,6 +7,13 @@ describe(TokenService.name, () => {
 
   beforeEach(async () => {
     tokenService = TestBed.inject(TokenService)
+
+    localStorage.clear()
+  })
+
+  it(`#${TokenService.prototype.getToken.name} Should return null when trigger method`, () => {
+    const token = tokenService.getToken()
+    expect(token).toEqual(null)
   })
 
   it(`#${TokenService.prototype.getToken.name} Should return token when trigger method`, () => {
